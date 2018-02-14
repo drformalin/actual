@@ -1,4 +1,4 @@
-﻿TrayTip, %A_ScriptName% run, latest version!!!, 10
+TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actual.ahk, actual.ahk
@@ -91,14 +91,14 @@ Return
 
 
 F6::
-kanatov_data := ""
+;kanatov_data := ""
   if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
 
-  	kanatov_data .= "EDRPO: " . clipboard . "`r`n"
-  	kanatov_data_clipboard := clipboard
+  	;kanatov_data .= "EDRPO: " . clipboard . "`r`n"
+  	;kanatov_data_clipboard := clipboard
 
-	;UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/?q=%clipboard%, rbuff_stage1.log
-	UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/22575729, rbuff_stage1.log
+	UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/?q=%clipboard%, rbuff_stage1.log
+	;UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/22575729, rbuff_stage1.log
 	FileRead, OutputVar, rbuff_stage1.log
   if not ErrorLevel  ; Successfully loaded.
 	{
