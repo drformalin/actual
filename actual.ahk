@@ -91,30 +91,31 @@ Return
 
 
 F6::
-;kanatov_data := ""
+kanatov_data := ""
   if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
 
-  	;kanatov_data .= "EDRPO: " . clipboard . "`r`n"
-  	;kanatov_data_clipboard := clipboard
-
-	UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/?q=%clipboard%, rbuff_stage1.log
+  	kanatov_data .= "EDRPO: " . clipboard . "`r`n"
+  	kanatov_data_clipboard := clipboard
+	UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/%clipboard%, rbuff_stage1.log
 	;UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/22575729, rbuff_stage1.log
 	FileRead, OutputVar, rbuff_stage1.log
   if not ErrorLevel  ; Successfully loaded.
 	{
-				RegExMatch(OutputVar, "<tbody>*.+</tbody>", Match)   ;section искать совпадения
+				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
+				;RegExMatch(OutputVar, "<tbody>*.+</tbody>", Match)   ;section искать совпадения
 				is_xml_loaded:= xpath_load(xml, Match)
-				xdata:=xpath(xml, "/tbody/tr[7]/td[2]/p/text()")
+				;xdata:=xpath(xml, "/tbody/tr[7]/td[2]/p/text()")
 				;x := "//*[@id=""tab-catalog""]/div/div[1]/table/tbody/tr[7]/td[2]/p/text()"
 				;xdata := xpath(xml, x)
-				xdata := RegExReplace(xdata, "\s+" "")
+				;xdata := RegExReplace(xdata, "\s+" "")
 				StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-				RegExMatch(OutputVar, "[0-9]{5,12}", Match)   ;section
+				;RegExMatch(OutputVar, "[0-9]{5,12}", Match)   ;section проверка номера
 
 
 				kanatov_data .= "Phone: " . Match . "`r`n"
 				Clipboard = %Match%
      			TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
      		}
+    else is_xml_loaded_t := "Sorry"
 }
 return
