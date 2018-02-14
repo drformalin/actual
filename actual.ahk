@@ -95,33 +95,7 @@ if not ErrorLevel  ; Successfully loaded.
 		}
 Send, ^{vk56}
 Return
-		RegExMatch(OutputVar, "@*.+(?=</f3>)", Match)   ;section искать совпадения
-		;RegExMatch(OutputVar, "<f3>[А-Яа-їЇІ ]+</f3>", Match)   ;section искать совпадения
-		;is_xml_loaded:= xpath_load(xml, Match)
-		;xdata:=xpath(xml, "f1/text()")
-		;xdata := RegExReplace(xdata, "\s+" "")
-		;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12 ;вывод?
-		;RegExMatch(OutputVar, "[А-Яа-їЇІ ]+", Match)   ;section
-		Clipboard = %Match%
-		;Clipboard = %xdata%
-	}
-Send, ^{vk56}
-Return
-
-F4::
-Macro4:
-WinActivate
-FileRead, OutputVar, hot.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f4>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
-Return
-
-
+		
 
 F6::
 kanatov_data := ""
