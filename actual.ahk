@@ -1,4 +1,4 @@
-yTip, %A_ScriptName% run, latest version!!!, 10
+TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actual.ahk, actual.ahk
