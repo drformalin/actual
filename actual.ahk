@@ -26,7 +26,7 @@ IfExist, xpath.ahk
 
 
 
-F8::
+F1::
 Macro1:
 WinActivate
 FileRead, OutputVar, hot.log
@@ -47,10 +47,10 @@ Send, ^{vk56}
 Return
 
 
-F2::
-data := A_DD.A_MM.A_YYYY
-Clipboard = %data%
-Send, ^{vk56}
+;F2::
+;data := A_DD.A_MM.A_YYYY
+;Clipboard = %data%
+;Send, ^{vk56}
 
 F3::
 Macro3:
