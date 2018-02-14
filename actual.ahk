@@ -1,5 +1,6 @@
 ﻿TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
+lDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actual.ahk, actual.ahk
 ;if ReloadKeyIs
 ;	Hotkey, %ReloadKeyIs%, ReloadKeyIs
 ;	else Hotkey, F2, ReloadKeyIs
