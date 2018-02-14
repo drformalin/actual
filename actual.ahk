@@ -1,4 +1,4 @@
-TrayTip, %A_ScriptName% run, latest version!!!, 10
+yTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actual.ahk, actual.ahk
@@ -28,40 +28,73 @@ IfExist, xpath.ahk
 
 
 
-F1::
-Macro1:
-WinActivate
-FileRead, OutputVar, hot.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f1>)", Match)
+;F1::
+;Macro1:
+;WinActivate
+;FileRead, OutputVar, hot.log
+;if not ErrorLevel  ; Successfully loaded.
+;	{
+;		data := OutputVar
+;		RegExMatch(OutputVar, "@*.+(?=</f1>)", Match)
+;		Clipboard = %Match%
+;		}
+;Send, ^{vk56}
+;Return
+
 		;RegExMatch(OutputVar, "<f1>*.+</f1>", Match)   ;section искать совпадения
 		;is_xml_loaded:= xpath_load(xml, Match)
 		;xdata:=xpath(xml, "f1/text()")
 		;xdata := RegExReplace(xdata, "\s+" "")
 		;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12 ;вывод?
 		;RegExMatch(OutputVar, "[А-Яа-їЇІ ]+", Match)   ;section
-		Clipboard = %Match%
-		;Clipboard = %xdata%
-	}
-Send, ^{vk56}
-Return
-
-
+		
 ;F2::
 ;data := A_DD.A_MM.A_YYYY
 ;Clipboard = %data%
 ;Send, ^{vk56}
 
-F3::
-Macro3:
+
+F1::
+Macro1:
 WinActivate
+UrlDownloadToFile,  https://raw.githubusercontent.com/drformalin/actual/master/hot.log, hot.log
 FileRead, OutputVar, hot.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		;RegExMatch(OutputVar, "<f3>*.+</f3>", Match)   ;section искать совпадения
+		RegExMatch(OutputVar, "@*.+(?=</f1>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
+Return
+
+F3::
+Macro3:
+WinActivate
+UrlDownloadToFile,  https://raw.githubusercontent.com/drformalin/actual/master/hot.log, hot.log
+FileRead, OutputVar, hot.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "@*.+(?=</f3>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
+Return
+
+F4::
+Macro4:
+WinActivate
+UrlDownloadToFile,  https://raw.githubusercontent.com/drformalin/actual/master/hot.log, hot.log
+FileRead, OutputVar, hot.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "@*.+(?=</f4>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
+Return
 		RegExMatch(OutputVar, "@*.+(?=</f3>)", Match)   ;section искать совпадения
 		;RegExMatch(OutputVar, "<f3>[А-Яа-їЇІ ]+</f3>", Match)   ;section искать совпадения
 		;is_xml_loaded:= xpath_load(xml, Match)
