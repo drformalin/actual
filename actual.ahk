@@ -26,7 +26,7 @@ IfExist, xpath.ahk
 
 
 
-F1::
+F8::
 Macro1:
 WinActivate
 FileRead, OutputVar, hot.log
