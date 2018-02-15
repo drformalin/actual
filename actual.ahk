@@ -67,7 +67,7 @@ if not ErrorLevel  ; Successfully loaded.
 		}
 Send, ^{vk56}
 Return
-
+F2::Send, %A_DD%.%A_MM%.%A_YYYY%
 F3::
 Macro3:
 WinActivate
@@ -95,9 +95,36 @@ if not ErrorLevel  ; Successfully loaded.
 		}
 Send, ^{vk56}
 Return
-		
 
 F6::
+Macro6:
+WinActivate
+UrlDownloadToFile,  https://raw.githubusercontent.com/drformalin/actual/master/hot.log, hot.log
+FileRead, OutputVar, hot.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "@*.+(?=</f6>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
+Return
+
+F7::
+Macro7:
+WinActivate
+UrlDownloadToFile,  https://raw.githubusercontent.com/drformalin/actual/master/hot.log, hot.log
+FileRead, OutputVar, hot.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "@*.+(?=</f7>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
+Return
+
+F12::
 kanatov_data := ""
   if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
 
