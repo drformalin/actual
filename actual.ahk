@@ -48,10 +48,7 @@ IfExist, xpath.ahk
 		;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12 ;вывод?
 		;RegExMatch(OutputVar, "[А-Яа-їЇІ ]+", Match)   ;section
 		
-;F2::
-;data := A_DD.A_MM.A_YYYY
-;Clipboard = %data%
-;Send, ^{vk56}
+
 
 
 F1::
@@ -67,7 +64,18 @@ if not ErrorLevel  ; Successfully loaded.
 		}
 Send, ^{vk56}
 Return
-F2::Send, %A_DD%.%A_MM%.%A_YYYY%
+
+
+;F2::Send, %A_DD%.%A_MM%.%A_YYYY%
+F2::
+date_now := %A_DD%.%A_MM%.%A_YYYY%
+clipboard := date_now
+;data := A_DD.A_MM.A_YYYY
+;Clipboard = %data%
+Send, ^{vk56}
+
+
+
 F3::
 Macro3:
 WinActivate
