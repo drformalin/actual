@@ -66,13 +66,12 @@ Send, ^{vk56}
 Return
 
 
-F2::Send, %A_DD%.%A_MM%.%A_YYYY%
-;F2::
-;date_now := %A_DD% %A_MM% %A_YYYY%
-;clipboard := date_now
-;data := A_DD.A_MM.A_YYYY
-;Clipboard = %data%
-;Send, ^{vk56}
+F2::
+;Send, %A_DD%.%A_MM%.%A_YYYY%
+clipboard = %A_DD%.%A_MM%.%A_YYYY%
+;MsgBox, clipboard
+Send, +{Ins}
+send, {Space}
 
 
 
