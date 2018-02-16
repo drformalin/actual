@@ -72,7 +72,7 @@ clipboard = %A_DD%.%A_MM%.%A_YYYY%
 ;MsgBox, clipboard
 Send, +{Ins}
 send, {Space}
-
+Return
 
 
 F3::
