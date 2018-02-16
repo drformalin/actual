@@ -68,7 +68,7 @@ Return
 
 ;F2::Send, %A_DD%.%A_MM%.%A_YYYY%
 F2::
-date_now := %A_DD%`.%A_MM%`.%A_YYYY%
+date_now := %A_DD% %A_MM% %A_YYYY%
 clipboard := date_now
 ;data := A_DD.A_MM.A_YYYY
 ;Clipboard = %data%
