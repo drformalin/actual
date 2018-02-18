@@ -131,32 +131,74 @@ if not ErrorLevel  ; Successfully loaded.
 Send, ^{vk56}
 Return
 
-F12::
-kanatov_data := ""
-  if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
+F11::
 
-  	kanatov_data .= "EDRPO: " . clipboard . "`r`n"
-  	kanatov_data_clipboard := clipboard
-	UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/%clipboard%, rbuff_stage1.log
-	;UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/22575729, rbuff_stage1.log
-	FileRead, OutputVar, rbuff_stage1.log
-  if not ErrorLevel  ; Successfully loaded.
+Yar_data := ""
+if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
+
+  	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
+  	edrpou := clipboard
+  	
+	UrlDownloadToFile, https://uabiz.org/search/?q=%edrpou%, uabiz1.log
+	FileRead, OutputVar, uabiz1.log
+	if not ErrorLevel  ; Successfully loaded.
 	{
-				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
-				;RegExMatch(OutputVar, "<tbody>*.+</tbody>", Match)   ;section искать совпадения
+	    FileRead, OutputVar, uabiz1.log
+	    RegExMatch(OutputVar, "<ol>*.+</ol>", Match)   
+			is_xml_loaded:= xpath_load(xml, Match) 
+			xdata:=xpath(xml, "/ol/li[1]/a/@href")
+			StringReplace, xdata, xdata, href=",,All
+			StringReplace, xdata, xdata, ",,All
+			UrlDownloadToFile, https://uabiz.org%xdata%, uabiz2.log
+			if not ErrorLevel ; Successfully loaded.
+			{
+				FileRead, OutputVar, uabiz2.log
+				RegExMatch(OutputVar, "<html>*.+</html>", Match)   ;section
+				RegExMatch(OutputVar, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
 				is_xml_loaded:= xpath_load(xml, Match)
-				;xdata:=xpath(xml, "/tbody/tr[7]/td[2]/p/text()")
-				;x := "//*[@id=""tab-catalog""]/div/div[1]/table/tbody/tr[7]/td[2]/p/text()"
-				;xdata := xpath(xml, x)
-				;xdata := RegExReplace(xdata, "\s+" "")
+				xdata:=xpath(xml, "/dd/text()")
+				;MsgBox, % xdata ;показывает содержимое, Имя
+				;;Clipboard = %Match%
+				Yar_name := xdata
+				RegExMatch(OutputVar, "<div class=""info"">*.+<div class=""about-area"">", Match)   ;section
+				;MsgBox % Match . ">>>>>>>>>>>>>>>>>>>>>>" 
+				;показывает кусок кода в котором нашло сравнение
+				is_xml_loaded:= xpath_load(xml, Match)
+				xdata:=xpath(xml, "/div/p[1]/text()")
+				xdata := RegExReplace(xdata, "\s+" "")
 				StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-				;RegExMatch(OutputVar, "[0-9]{5,12}", Match)   ;section проверка номера
-
-
-				kanatov_data .= "Phone: " . Match . "`r`n"
-				Clipboard = %Match%
-     			TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
+				RegExMatch(OutputVar, "[0-9]{5,15}", Match)   ;section
+				Uabiz:= % Match
+				;очистить файл
+				Yar_data .= "Phone Uabiz: " . Uabiz . "`r`n"
+				;FileDelete , uabiz2.log
+            }
+        UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/%edrpou%, YouControl.log
+	if not ErrorLevel  ; Successfully loaded.
+	        {
+	        	FileRead, OutputVar, YouControl.log
+				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
+				YouControl:= % Match
+				Yar_data .= "Phone YouControl: " . YouControl . "`r`n"
+			}
+	    UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
+        if not ErrorLevel  ; Successfully loaded.
+          	{
+		FileRead, OutputVar, region.log
+        RegExMatch(OutputVar, "[0-9]@*.+(?=<\/td><\/tr>)", Match)
+        ;is_xml_loaded:= xpath_load(xml, Match)
+        Region := % Match
+        ;MsgBox = % Match
+        ;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
+        Yar_data .= "Phone Region: " . Region . "`r`n"
+	    ;kanatov_data .= "Phone: " . Match . "`r`n"
+		;		Clipboard = %Match%
+     	;		TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
      		}
-    else is_xml_loaded_t := "Sorry"
+    ;else is_xml_loaded_t := "Sorry"
+}
+	;MsgBox, % Yar_data 
+	clipboard = %Yar_data%
+	TrayTip, Yaroslav say... [%is_xml_loaded%] , EDRPOU: %edrpou%`r`nName: %Yar_name%`r`nUabiz: %Uabiz%`r`nYouControl: %YouControl%`r`nRegion: %Region%`r`n , 20
 }
 return
