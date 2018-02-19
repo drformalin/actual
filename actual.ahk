@@ -140,6 +140,9 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
   	edrpou := clipboard
   	
 	FileDelete , uabiz1.log
+	IfNotExist, uabiz1.log
+        Msgbox, net
+	UrlDownloadToFile,
 	UrlDownloadToFile, https://uabiz.org/search/?q=%edrpou%, uabiz1.log
 	FileRead, OutputVar, uabiz1.log
 	if not ErrorLevel  ; Successfully loaded.
