@@ -172,8 +172,8 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
 				xdata:=xpath(xml, "/div/p[1]/text()")
 				xdata := RegExReplace(xdata, "\s+" "")
 				StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-				RegExMatch(OutputVar, "[0-9]{5,15}", Match)   ;section
-				Uabiz:= % Match
+				RegExMatch(OutputVar, "[0-9]{5,15}", Match1)   ;section
+				Uabiz:= % Match1
 				;очистить файл
 				Yar_data .= "Phone Uabiz: " . Uabiz . "`r`n"
 				;
