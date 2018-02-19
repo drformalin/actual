@@ -139,9 +139,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
   	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
   	edrpou := clipboard
   	
-	FileDelete , uabiz1.log
-	IfNotExist, uabiz1.log
-        Msgbox, net
+	
 	UrlDownloadToFile, https://uabiz.org/search/?q=%edrpou%, uabiz1.log
 	FileRead, OutputVar, uabiz1.log
 	if not ErrorLevel  ; Successfully loaded.
@@ -152,7 +150,6 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
 			xdata:=xpath(xml, "/ol/li[1]/a/@href")
 			StringReplace, xdata, xdata, href=",,All
 			StringReplace, xdata, xdata, ",,All
-			FileDelete , uabiz2.log
 			UrlDownloadToFile, https://uabiz.org%xdata%, uabiz2.log
 			if not ErrorLevel ; Successfully loaded.
 			{
