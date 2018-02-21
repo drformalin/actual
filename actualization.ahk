@@ -1,7 +1,7 @@
 TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
-UrlDownloadToFile, https://gist.githubusercontent.com/drformalin/2a3b710230c0c7863f22e657009344f7/raw/actualization.apk, actualization.ahk
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actualization.ahk, actualization.ahk
 ;if ReloadKeyIs
 ;	Hotkey, %ReloadKeyIs%, ReloadKeyIs
 ;	else Hotkey, F2, ReloadKeyIs
@@ -31,7 +31,7 @@ F1::
 Macro1:
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://gist.githubusercontent.com/drformalin/d5e8e9285c9531bfa3fd5a0bc3c0b56f/raw/712a213775c37e2885b4dd332225642ec3353b5e/hotact.log, hotact.log
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -56,7 +56,7 @@ F3::
 Macro3:
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://gist.githubusercontent.com/drformalin/d5e8e9285c9531bfa3fd5a0bc3c0b56f/raw/712a213775c37e2885b4dd332225642ec3353b5e/hotact.log, hotact.log
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
