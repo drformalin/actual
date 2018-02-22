@@ -235,7 +235,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 				Uabiz:= Match
 
 				;очистить файл
-				Yar_data .= " Uabiz . ""
+				Yar_data .= " Uabiz . "`r`n"
 
 				;
             }
@@ -248,7 +248,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 	        	FileRead, OutputVar, YouControl.log
 				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
 				YouControl:= % Match
-				Yar_data .=  YouControl . ""
+				Yar_data .=  YouControl . "`r`n"
 			}
 	    UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
         if not ErrorLevel  ; Successfully loaded.
