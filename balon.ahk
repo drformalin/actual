@@ -32,7 +32,7 @@ F1::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -56,7 +56,7 @@ F3::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -71,7 +71,7 @@ F4::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -86,7 +86,7 @@ F6::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -101,7 +101,7 @@ F7::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -116,7 +116,7 @@ F8::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -131,7 +131,7 @@ F9::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -146,7 +146,7 @@ F10::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
@@ -161,7 +161,7 @@ F12::
 copy := % Clipboard
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotact.log
+FileRead, OutputVar, hotbalon.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
