@@ -1,7 +1,7 @@
 TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
-;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actualization.ahk, actualization.ahk
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actualization.ahk, actualization.ahk
 ;if ReloadKeyIs
 ;	Hotkey, %ReloadKeyIs%, ReloadKeyIs
 ;	else Hotkey, F2, ReloadKeyIs
@@ -29,16 +29,8 @@ IfExist, xpath.ahk
 
 F1::
 copy := % Clipboard
-WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f1>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+Clipboard = Актуалізація
+Send, +{Ins}
 Clipboard = %copy%
 Return
 
@@ -59,98 +51,53 @@ Clipboard = %copy%
 Return
 
 F4::
-Macro4:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f4>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Збій
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F6::
-Macro6:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f6>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Немає номера
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F7::
-Macro7:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f7>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Не вірний номер
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F8::
-Macro8:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f8>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Не користується газом
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F9::
-Macro9:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f9>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Організація припинила діяльність
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F10::
-Macro10:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f10>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Користується централізованим опаленням
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F12::
-Macro12:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f12>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Інформацію надати відмовився
+Send, +{Ins}
+Clipboard = %copy%
 Return
-
-
-
 
 F11::
 
