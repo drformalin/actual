@@ -28,184 +28,144 @@ IfExist, xpath.ahk
 
 
 F1::
-Macro1:
 copy := % Clipboard
-WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f1>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+Clipboard = Актуалізація
+Send, +{Ins}
 Clipboard = %copy%
 Return
 
 
 F2::
-;Send, %A_DD%.%A_MM%.%A_YYYY%
+copy := % Clipboard
 clipboard = %A_DD%.%A_MM%.%A_YYYY%
-;MsgBox, clipboard
 Send, +{Ins}
 send, {Space}
+Clipboard = %copy%
 Return
 
 F3::
-Macro3:
 copy := % Clipboard
-WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f3>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+Clipboard = Немає відповіді
+Send, +{Ins}
 Clipboard = %copy%
 Return
 
 F4::
-Macro4:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f4>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Збій
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F6::
-Macro6:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f6>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Немає номера
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F7::
-Macro7:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f7>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Не вірний номер
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F8::
-Macro8:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f8>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Не користується газом
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F9::
-Macro9:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f9>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Організація припинила діяльність
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F10::
-Macro10:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f10>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Користується централізованим опаленням
+Send, +{Ins}
+Clipboard = %copy%
 Return
 
 F12::
-Macro12:
-WinActivate
-FileRead, OutputVar, hotact.log
-if not ErrorLevel  ; Successfully loaded.
-	{
-		data := OutputVar
-		RegExMatch(OutputVar, "@*.+(?=</f12>)", Match)
-		Clipboard = %Match%
-		}
-Send, ^{vk56}
+copy := % Clipboard
+Clipboard = Інформацію надати відмовився
+Send, +{Ins}
+Clipboard = %copy%
 Return
-
-
-
 
 F11::
 
 Yar_data := ""
-if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
+
+if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
+{
+	TrayTip, RegExMatch agreed,F11 PROCESSING..., 5
 
   	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
   	edrpou := clipboard
   	
 	
 	UrlDownloadToFile, https://uabiz.org/search/?q=%edrpou%, uabiz1.log
-	FileRead, OutputVar, uabiz1.log
+	FileRead, OutputVar_uabiz1, uabiz1.log
 	if not ErrorLevel  ; Successfully loaded.
 	{
-	    FileRead, OutputVar, uabiz1.log
-	    RegExMatch(OutputVar, "<ol>*.+</ol>", Match)   
+	    FileRead, OutputVar_uabiz1, uabiz1.log
+	    ; 22575729
+	    ; 22575725
+
+
+	    uabiz1_Pos := RegExMatch(OutputVar_uabiz1, "<ol>*.+</ol>")  ; Returns 4, which is the position where the match was found.
+
+	    if (uabiz1_Pos > 10) {
+	    ;MsgBox, % uabiz1_Pos
+	   	; 22575729
+	    ; 22575725
+
+	    RegExMatch(OutputVar_uabiz1, "<ol>*.+</ol>", Match)   
+
 			is_xml_loaded:= xpath_load(xml, Match) 
 			xdata:=xpath(xml, "/ol/li[1]/a/@href")
 			StringReplace, xdata, xdata, href=",,All
 			StringReplace, xdata, xdata, ",,All
+
 			UrlDownloadToFile, https://uabiz.org%xdata%, uabiz2.log
 			if not ErrorLevel ; Successfully loaded.
 			{
-			        
-				FileRead, OutputVar, uabiz2.log
-				RegExMatch(OutputVar, "<html>*.+</html>", Match)   ;section
-				RegExMatch(OutputVar, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
+
+			    ;MsgBox, uabiz2.log has no ErrorLevel
+				FileRead, OutputVar_uabiz2, uabiz2.log
+				RegExMatch(OutputVar_uabiz2, "<html>*.+</html>", Match)   ;section
+				RegExMatch(OutputVar_uabiz2, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
 				is_xml_loaded:= xpath_load(xml, Match)
 				xdata:=xpath(xml, "/dd/text()")
 				;MsgBox, % xdata ;показывает содержимое, Имя
 				;;Clipboard = %Match%
 				Yar_name := xdata
-				RegExMatch(OutputVar, "<div class=""info"">*.+<div class=""about-area"">", Match)   ;section
+				RegExMatch(OutputVar_uabiz2, "<div class=""info"">*.+<div class=""about-area"">", Match)   ;section
 				;MsgBox % Match . ">>>>>>>>>>>>>>>>>>>>>>" 
 				;показывает кусок кода в котором нашло сравнение
 				is_xml_loaded:= xpath_load(xml, Match)
 				xdata:=xpath(xml, "/div/p[1]/text()")
 				xdata := RegExReplace(xdata, "\s+" "")
-				StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-				RegExMatch(OutputVar, "[0-9]{5,15}", Match1)   ;section
-				Uabiz:= % Match1
+				StringTrimLeft, OutputVar_uabiz2, xdata, StrLen(xdata)-12
+				RegExMatch(OutputVar_uabiz2, "[0-9]{5,15}", Match)   ;section
+
+				Uabiz:= Match
+
 				;очистить файл
 				Yar_data .= "Phone Uabiz: " . Uabiz . "`r`n"
+
 				;
             }
+		}
+
+    }
         UrlDownloadToFile, https://youcontrol.com.ua/ru/catalog/company_details/%edrpou%, YouControl.log
 	if not ErrorLevel  ; Successfully loaded.
 	        {
@@ -229,9 +189,14 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$")){
      	;		TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
      		}
     ;else is_xml_loaded_t := "Sorry"
-}
+
 	;MsgBox, % Yar_data 
 	clipboard = %Yar_data%
-	TrayTip, Yaroslav say... [%is_xml_loaded%] , EDRPOU: %edrpou%`r`nName: %Yar_name%`r`nUabiz: %Uabiz%`r`nYouControl: %YouControl%`r`nRegion: %Region%`r`n , 20
+	TrayTip, Yaroslav say... [%is_xml_loaded%] ,`r`nEDRPOU: %edrpou%`r`nName: %Yar_name%`r`n`r`nUabiz: %Uabiz%`r`nYouControl: %YouControl%`r`nRegion: %Region%`r`n`r`n`r`n , 20
 }
+
+
+Yar_name := ""
+Uabiz := ""
+
 return
