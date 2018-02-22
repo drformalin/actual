@@ -259,7 +259,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
         Region := % Match
         ;MsgBox = % Match
         ;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-        Yar_data .= "Phone Region: " . Region . "`r`n"
+        Yar_data .= Region . "`r`n"
 	    ;kanatov_data .= "Phone: " . Match . "`r`n"
 		;		Clipboard = %Match%
      	;		TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
