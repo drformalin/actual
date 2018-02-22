@@ -1,7 +1,8 @@
 TrayTip, %A_ScriptName% run, latest version!!!, 10
 RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/actualization.ahk, actualization.ahk
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/balon.ahk, balon.ahk
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 ;if ReloadKeyIs
 ;	Hotkey, %ReloadKeyIs%, ReloadKeyIs
 ;	else Hotkey, F2, ReloadKeyIs
@@ -30,7 +31,7 @@ IfExist, xpath.ahk
 F1::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -54,7 +55,7 @@ Return
 F3::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -69,7 +70,7 @@ Return
 F4::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -84,7 +85,7 @@ Return
 F6::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -99,7 +100,7 @@ Return
 F7::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -114,7 +115,7 @@ Return
 F8::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -129,7 +130,7 @@ Return
 F9::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -144,7 +145,7 @@ Return
 F10::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
@@ -159,7 +160,7 @@ Return
 F12::
 copy := % Clipboard
 WinActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
