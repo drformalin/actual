@@ -29,8 +29,16 @@ IfExist, xpath.ahk
 
 F1::
 copy := % Clipboard
-Clipboard = Актуалізація
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f1>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
@@ -45,59 +53,127 @@ Return
 
 F3::
 copy := % Clipboard
-Clipboard = Немає відповіді
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f3>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F4::
 copy := % Clipboard
-Clipboard = Збій
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f4>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F6::
 copy := % Clipboard
-Clipboard = Немає номера
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f6>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F7::
 copy := % Clipboard
-Clipboard = Не вірний номер
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f7>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F8::
 copy := % Clipboard
-Clipboard = Не користується газом
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f8>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F9::
 copy := % Clipboard
-Clipboard = Організація припинила діяльність
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f9>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F10::
 copy := % Clipboard
-Clipboard = Користується централізованим опаленням
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f10>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
 
 F12::
 copy := % Clipboard
-Clipboard = Інформацію надати відмовився
-Send, +{Ins}
+WinActivate
+UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
+FileRead, OutputVar, hotact.log
+if not ErrorLevel  ; Successfully loaded.
+	{
+		data := OutputVar
+		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f12>)", Match)
+		Clipboard = %Match%
+		}
+Send, ^{vk56}
 Clipboard = %copy%
 Return
+
+
+
+
 
 F11::
 
