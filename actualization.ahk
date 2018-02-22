@@ -35,7 +35,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f1>)", Match)
+		RegExMatch(OutputVar, "(?<=<f1>).*?(?=<\/f1>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -59,7 +59,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f3>)", Match)
+		RegExMatch(OutputVar, "(?<=<f3>).*?(?=<\/f3>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -74,7 +74,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f4>)", Match)
+		RegExMatch(OutputVar, "(?<=<f4>).*?(?=<\/f4>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -89,7 +89,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f6>)", Match)
+		RegExMatch(OutputVar, "(?<=<f6>).*?(?=<\/f6>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -104,7 +104,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f7>)", Match)
+		RegExMatch(OutputVar, "(?<=<f7>).*?(?=<\/f7>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -119,7 +119,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f8>)", Match)
+		RegExMatch(OutputVar, "(?<=<f8>).*?(?=<\/f8>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -134,7 +134,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f9>)", Match)
+		RegExMatch(OutputVar, "(?<=<f9>).*?(?=<\/f9>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -149,7 +149,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f10>)", Match)
+		RegExMatch(OutputVar, "(?<=<f10>).*?(?=<\/f10>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
@@ -164,7 +164,7 @@ FileRead, OutputVar, hotact.log
 if not ErrorLevel  ; Successfully loaded.
 	{
 		data := OutputVar
-		RegExMatch(OutputVar, "(?<=<>).*?(?=<\/f12>)", Match)
+		RegExMatch(OutputVar, "(?<=<f12>).*?(?=<\/f12>)", Match)
 		Clipboard = %Match%
 		}
 Send, ^{vk56}
