@@ -235,7 +235,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 				Uabiz:= Match
 
 				;очистить файл
-				Yar_data .= " Uabiz . "`r`n"
+				Yar_data .= Uabiz . "`r`n"
 
 				;
             }
@@ -248,7 +248,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 	        	FileRead, OutputVar, YouControl.log
 				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
 				YouControl:= % Match
-				Yar_data .=  YouControl . "`r`n"
+				Yar_data .= YouControl . "`r`n"
 			}
 	    UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
         if not ErrorLevel  ; Successfully loaded.
@@ -260,7 +260,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
         ;MsgBox = % Match
         ;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
         Yar_data .= Region . "`r`n"
-	    
+	    ;kanatov_data .= "Phone: " . Match . "`r`n"
 		;		Clipboard = %Match%
      	;		TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
      		}
