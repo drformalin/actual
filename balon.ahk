@@ -3,7 +3,6 @@ RegExMatch(A_ScriptName, "([A-Z])\w+{1,2}", ReloadKeyIs)
 #SingleInstance, force
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/balon.ahk, balon.ahk
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
-FileRead, OutputVar, hotbalon.log
 ;if ReloadKeyIs
 ;	Hotkey, %ReloadKeyIs%, ReloadKeyIs
 ;	else Hotkey, F2, ReloadKeyIs
@@ -31,10 +30,16 @@ IfExist, xpath.ahk
 
 F1::
 copy := % Clipboard
+Sleep, 50
 WinActivate
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f1>).*?(?=<\/f1>)", Match)
 		Clipboard = %Match%
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -51,10 +56,14 @@ Return
 F3::
 copy := % Clipboard
 WinActivate
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f3>).*?(?=<\/f3>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -62,11 +71,14 @@ Return
 F4::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f4>).*?(?=<\/f4>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -74,11 +86,14 @@ Return
 F6::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f6>).*?(?=<\/f6>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -86,11 +101,14 @@ Return
 F7::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f7>).*?(?=<\/f7>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -98,11 +116,14 @@ Return
 F8::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f8>).*?(?=<\/f8>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -110,11 +131,14 @@ Return
 F9::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f9>).*?(?=<\/f9>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -122,11 +146,14 @@ Return
 F10::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f10>).*?(?=<\/f10>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
@@ -134,11 +161,14 @@ Return
 F12::
 copy := % Clipboard
 WinActivate
-
+;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
+FileRead, OutputVar, hotbalon.log
+if not ErrorLevel  ; Successfully loaded.
+	{
 		data := OutputVar
 		RegExMatch(OutputVar, "(?<=<f12>).*?(?=<\/f12>)", Match)
 		Clipboard = %Match%
-		
+		}
 Send, ^{vk56}
 Clipboard = %copy%
 Return
