@@ -30,6 +30,7 @@ IfExist, xpath.ahk
 
 F1::
 copy := % Clipboard
+Sleep, 50
 WinActivate
 ;UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotbalon.log, hotbalon.log
 FileRead, OutputVar, hotbalon.log
