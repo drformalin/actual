@@ -176,8 +176,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 
   	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
   	edrpou := clipboard
-  	
-	
+  	;Номер уабиз
 	UrlDownloadToFile, https://uabiz.org/search/?q=%edrpou%, uabiz1.log
 	FileRead, OutputVar_uabiz1, uabiz1.log
 	if not ErrorLevel  ; Successfully loaded.
@@ -207,13 +206,13 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 
 			    ;MsgBox, uabiz2.log has no ErrorLevel
 				FileRead, OutputVar_uabiz2, uabiz2.log
-				RegExMatch(OutputVar_uabiz2, "<html>*.+</html>", Match)   ;section
-				RegExMatch(OutputVar_uabiz2, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
-				is_xml_loaded:= xpath_load(xml, Match)
-				xdata:=xpath(xml, "/dd/text()")
+				;RegExMatch(OutputVar_uabiz2, "<html>*.+</html>", Match)   ;section
+				;RegExMatch(OutputVar_uabiz2, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
+				;is_xml_loaded:= xpath_load(xml, Match)
+				;xdata:=xpath(xml, "/dd/text()")
 				;MsgBox, % xdata ;показывает содержимое, Имя
 				;;Clipboard = %Match%
-				Yar_name := xdata
+				;Yar_name := xdata
 				RegExMatch(OutputVar_uabiz2, "<div class=""info"">*.+<div class=""about-area"">", Match)   ;section
 				;MsgBox % Match . ">>>>>>>>>>>>>>>>>>>>>>" 
 				;показывает кусок кода в котором нашло сравнение
@@ -226,7 +225,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 				Uabiz:= Match
 
 				;очистить файл
-				Yar_data .= Uabiz . "`r`n"
+				Yar_data .= Uabiz . " "
 
 				;
             }
@@ -239,18 +238,22 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 	        	FileRead, OutputVar, YouControl.log
 				RegExMatch(OutputVar, "(?<=<p>)[+0-9 -]+(?=</p>)", Match)
 				YouControl:= % Match
-				Yar_data .= YouControl . "`r`n"
+				Yar_data .= YouControl . " "
 			}
 	    UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
         if not ErrorLevel  ; Successfully loaded.
           	{
 		FileRead, OutputVar, region.log
+		;RegExReplace(var, ";", "`r`n")
+   ;RegExReplace(var, "[a-z,& \(\)]+", "")
         RegExMatch(OutputVar, "[0-9]@*.+(?=<\/td><\/tr>)", Match)
+        Match1 := RegExReplace(Match, ";", "`r`n")
+        Match2 := RegExReplace(Match1, "[a-z,& \(\)]+", "")
         ;is_xml_loaded:= xpath_load(xml, Match)
-        Region := % Match
+        Region := % Match2
         ;MsgBox = % Match
         ;StringTrimLeft, OutputVar, xdata, StrLen(xdata)-12
-        Yar_data .= Region . "`r`n"
+        Yar_data .= Region . " "
 	    ;kanatov_data .= "Phone: " . Match . "`r`n"
 		;		Clipboard = %Match%
      	;		TrayTip, [%is_xml_loaded%] , Phone: %Match%`r`n, 10
@@ -259,7 +262,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 
 	;MsgBox, % Yar_data 
 	clipboard = %Yar_data%
-	TrayTip, Yaroslav say... [%is_xml_loaded%] ,`r`nEDRPOU: %edrpou%`r`nName: %Yar_name%`r`n`r`nUabiz: %Uabiz%`r`nYouControl: %YouControl%`r`nRegion: %Region%`r`n`r`n`r`n , 20
+	TrayTip, Yaroslav say... [%is_xml_loaded%] ,`r`nEDRPOU: %edrpou%`r`nStatus: %Yar_status%`r`nName: %Yar_name%`r`nUabiz: %Uabiz%`r`nYouControl: %YouControl%`r`nRegion: %Region%`r`n`r`n`r`n , 20
 }
 
 
@@ -268,31 +271,3 @@ Uabiz := ""
 
 return
 
-F12::
-Mail := ""
-
-if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
-{
-	TrayTip, RegExMatch agreed,F12 PROCESSING..., 5
-
-  	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
-  	edrpou := clipboard
-  	
-  	UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
-        if not ErrorLevel  ; Successfully loaded.
-          	{
-		FileRead, OutputVar, region.log
-		RegExMatch(OutputVar, "[a-z\@\.\-\_]+@[a-z\@\.\-\_]+(?=<\/a><\/td>)", mail2) ;первая электронка
-		MsgBox = % mail2
-		Mail .= mail2 . "`r`n"
-		FileRead, OutputVar, region.log
-		RegExMatch(OutputVar, "(?<a>)[a-z\@\.\_\-]+(?=<\/a> \, \<a)", mail1) ;
-        MsgBox = % mail1
-        Mail .= mail1
-	    	}
-
-	;MsgBox, % Mail
-	clipboard = %Mail%
-	TrayTip, Yaroslav say... [%is_xml_loaded%] ,`r`nEDRPOU: %edrpou%`r`ne-mail: %Mail%`r`n , 10
-}
-return
