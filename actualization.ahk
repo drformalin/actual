@@ -271,3 +271,32 @@ Uabiz := ""
 
 return
 
+F12::
+Mail := ""
+
+if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
+{
+	TrayTip, RegExMatch agreed,F12 PROCESSING..., 5
+
+  	;Yar_data .= "EDRPO: " . clipboard . "`r`n"
+  	edrpou := clipboard
+  	
+  	UrlDownloadToFile, https://www.ua-region.com.ua/search/?ko=0&vibor=full.php&q=%edrpou%, region.log
+        if not ErrorLevel  ; Successfully loaded.
+          	{
+		FileRead, OutputVar, region.log
+		RegExMatch(OutputVar, "[a-z\@\.\-\_]+@[a-z\@\.\-\_]+(?=<\/a><\/td>)", mail2) ;первая электронка
+		MsgBox = % mail2
+		Mail .= mail2 . "`r`n"
+		FileRead, OutputVar, region.log
+		RegExMatch(OutputVar, "(?<a>)[a-z\@\.\_\-]+(?=<\/a> \, \<a)", mail1) ;
+        MsgBox = % mail1
+        Mail .= mail1
+	    	}
+
+	;MsgBox, % Mail
+	clipboard = %Mail%
+	TrayTip, Yaroslav say... [%is_xml_loaded%] ,`r`nEDRPOU: %edrpou%`r`ne-mail: %Mail%`r`n , 10
+}
+return
+
