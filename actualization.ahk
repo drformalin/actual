@@ -225,6 +225,7 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 				Uabiz:= Match
 
 				;очистить файл
+				Yar_data .= Yar_name . "`r`n"
 				Yar_data .= Uabiz . " "
 
 				;
