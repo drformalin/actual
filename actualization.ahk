@@ -46,6 +46,7 @@ Return
 
 F2::
 copy := % Clipboard
+Sleep, 400
 clipboard = %A_DD%.%A_MM%.%A_YYYY%
 Send, +{Ins}
 send, {Space}
@@ -70,6 +71,7 @@ Return
 
 F4::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
@@ -85,6 +87,7 @@ Return
 
 F6::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
@@ -100,6 +103,7 @@ Return
 
 F7::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
@@ -115,6 +119,7 @@ Return
 
 F8::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
@@ -130,6 +135,7 @@ Return
 
 F9::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
@@ -145,6 +151,7 @@ Return
 
 F10::
 copy := % Clipboard
+Sleep, 400
 WinActivate
 UrlDownloadToFile, https://raw.githubusercontent.com/drformalin/actual/master/hotact.log, hotact.log
 FileRead, OutputVar, hotact.log
