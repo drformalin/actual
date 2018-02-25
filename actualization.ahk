@@ -206,13 +206,13 @@ if (RegExMatch(clipboard, "i)^[0-9]{8}$|^[0-9]{10}$|^[0-9]{12}$"))
 
 			    ;MsgBox, uabiz2.log has no ErrorLevel
 				FileRead, OutputVar_uabiz2, uabiz2.log
-				;RegExMatch(OutputVar_uabiz2, "<html>*.+</html>", Match)   ;section
-				;RegExMatch(OutputVar_uabiz2, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
-				;is_xml_loaded:= xpath_load(xml, Match)
-				;xdata:=xpath(xml, "/dd/text()")
+				RegExMatch(OutputVar_uabiz2, "<html>*.+</html>", Match)   ;section
+				RegExMatch(OutputVar_uabiz2, "s)<dd class=""edit_input"">*.+</dd>", Match)   ;section
+				is_xml_loaded:= xpath_load(xml, Match)
+				xdata:=xpath(xml, "/dd/text()")
 				;MsgBox, % xdata ;показывает содержимое, Имя
 				;;Clipboard = %Match%
-				;Yar_name := xdata
+				Yar_name := xdata
 				RegExMatch(OutputVar_uabiz2, "<div class=""info"">*.+<div class=""about-area"">", Match)   ;section
 				;MsgBox % Match . ">>>>>>>>>>>>>>>>>>>>>>" 
 				;показывает кусок кода в котором нашло сравнение
